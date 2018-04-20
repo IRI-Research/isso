@@ -299,10 +299,10 @@ class API(object):
                                    max_age=self.conf.getint('max-age'))
 
         rv["text"] = self.isso.render(rv["text"])
-        rv["hash"] = self.hash(rv['email'] or rv['remote_addr'])
+        rv["hash"] = self.hash(rv['email'] or rv['author'] or rv['remote_addr'])
 
         self.cache.set(
-            'hash', (rv['email'] or rv['remote_addr']).encode('utf-8'), rv['hash'])
+            'hash', (rv['email'] or rv['author'] or rv['remote_addr']).encode('utf-8'), rv['hash'])
 
         rv = self._add_gravatar_image(rv)
 
