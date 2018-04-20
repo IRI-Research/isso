@@ -38,6 +38,11 @@ require(["app/lib/ready", "app/config", "app/i18n", "app/api", "app/isso", "app/
         $("#isso-thread").append(new isso.Postbox(null));
         $("#isso-thread").append('<div id="isso-root"></div>');
 
+        var targetMessageId = $("#isso-thread").getAttribute("data-isso-target-message");
+        if(targetMessageId) {
+            targetMessageId = "#" + targetMessageId;
+        }
+
         api.fetch($("#isso-thread").getAttribute("data-isso-id"),
             config["max-comments-top"],
             config["max-comments-nested"]).then(
@@ -62,8 +67,14 @@ require(["app/lib/ready", "app/config", "app/i18n", "app/api", "app/isso", "app/
                     isso.insert_loader(rv, lastcreated);
                 }
 
-                if (window.location.hash.length > 0) {
-                    $(window.location.hash).scrollIntoView();
+                var scrollElementId = targetMessageId || window.location.hash;
+                if (scrollElementId) {
+                    try {
+                        $(scrollElementId).scrollIntoView();
+                    }
+                    catch(err) {
+                        // do nothing
+                    }
                 }
             },
             function(err) {

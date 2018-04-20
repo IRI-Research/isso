@@ -17,7 +17,8 @@ define(function() {
                       "#be5168", "#f19670", "#e4bf80", "#447c69"].join(" "),
         "vote": true,
         "vote-levels": null,
-        "feed": false
+        "feed": false,
+        "base-location": "#"
     };
 
     var js = document.getElementsByTagName("script");

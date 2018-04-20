@@ -149,7 +149,7 @@ define(["app/dom", "app/utils", "app/config", "app/api", "app/jade", "app/i18n",
     };
 
     var insert = function(comment, scrollIntoView) {
-        var el = $.htmlify(jade.render("comment", {"comment": comment}));
+        var el = $.htmlify(jade.render("comment", {"comment": comment, "baseLocation": config["base-location"]}));
 
         // update datetime every 60 seconds
         var refresh = function() {
@@ -202,7 +202,7 @@ define(["app/dom", "app/utils", "app/config", "app/api", "app/jade", "app/i18n",
                 // Eg. -5,5,15
                 voteLevels = voteLevels.split(',');
             }
-            
+
             // update vote counter
             var votes = function (value) {
                 var span = $("span.votes", footer);
@@ -240,7 +240,7 @@ define(["app/dom", "app/utils", "app/config", "app/api", "app/jade", "app/i18n",
                     votes(rv.likes - rv.dislikes);
                 });
             });
-            
+
             votes(comment.likes - comment.dislikes);
         }
 
