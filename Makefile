@@ -27,10 +27,12 @@ DOCS_HTML_DST := docs/_build/html
 
 RJS = r.js
 
+export PATH := $(PATH):$(dir $(realpath $(firstword $(MAKEFILE_LIST))))node_modules/.bin
+
 all: man js site
 
 init:
-	(cd isso/js; bower --allow-root install almond requirejs requirejs-text jade)
+	(echo $(PATH); cd isso/js; bower --allow-root install almond requirejs requirejs-text jade)
 
 check:
 	@echo "Python 2.x"

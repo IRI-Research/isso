@@ -172,7 +172,7 @@ way to set up Isso. It requires a lot more dependencies and effort:
 - Virtualenv
 - SQLite 3.3.8 or later
 - a working C compiler
-- Node.js, `NPM <https://npmjs.org/>`__ and `Bower <http://bower.io/>`__
+- Node.js, `NPM <https://npmjs.org/>`__ or `Yarn <https://yarnpkg.com>`__
 
 Get a fresh copy of Isso:
 
@@ -194,6 +194,19 @@ Install Isso and its dependencies:
 
     ~> python setup.py develop  # or `install`
     ~> isso run
+
+Install JavaScript prerequisite:
+
+.. code-block:: sh
+
+    ~> yarn install
+
+or
+
+.. code-block:: sh
+
+    ~> npm install
+
 
 Install JavaScript modules:
 
