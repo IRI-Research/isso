@@ -55,7 +55,7 @@ name
     not used otherwise.
 
 host
-    Your website(s). If Isso is unable to connect to at least on site, you'll
+    Your website(s). If Isso is unable to connect to at least one site, you'll
     get a warning during startup and comments are most likely non-functional.
 
     You'll need at least one host/website to run Isso. This is due to security
@@ -87,6 +87,14 @@ notify
     smtp
         Send notifications via SMTP on new comments with activation (if
         moderated) and deletion links.
+
+reply-notifications
+    Allow users to request E-mail notifications for replies to their post.
+
+    It is highly recommended to also turn on moderation when enabling this
+    setting, as Isso can otherwise be easily exploited for sending spam.
+
+    Do not forget to configure the client accordingly.
 
 log-file
     Log console messages to file instead of standard out.
@@ -155,6 +163,12 @@ listen
     `#299 <https://github.com/surfly/gevent/issues/299>`_ for details).
 
     Does not apply for `uWSGI`.
+
+public-endpoint
+    public URL that Isso is accessed from by end users. Should always be
+    a http:// or https:// absolute address. If left blank, automatic
+    detection is attempted. Normally only needs to be specified if
+    different than the `listen` setting.
 
 reload
     reload application, when the source code has changed. Useful for
@@ -276,7 +290,7 @@ supported, but new languages are relatively easy to add.
     allowed-attributes =
 
 options
-    `Misaka-specific Markdown extensions <http://misaka.61924.nl/api/>`_, all
+    `Misaka-specific Markdown extensions <http://misaka.61924.nl/#api>`_, all
     flags starting with `EXT_` can be used there, separated by comma.
 
 allowed-elements
@@ -353,3 +367,18 @@ Timedelta
 
     You can add different types: `1m30s` equals to 90 seconds, `3h45m12s`
     equals to 3 hours, 45 minutes and 12 seconds (12512 seconds).
+
+Environment variables
+---------------------
+
+.. _environment-variables:
+
+Isso also support configuration through some environment variables:
+
+ISSO_CORS_ORIGIN
+    By default, `isso` will use the `Host` or else the `Referrer` HTTP header
+    of the request to defines a CORS `Access-Control-Allow-Origin` HTTP header
+    in the response.
+    This environent variable allows you to define a broader fixed value,
+    in order for example to share a single Isso instance among serveral of your
+    subdomains : `ISSO_CORS_ORIGIN=*.example.test`

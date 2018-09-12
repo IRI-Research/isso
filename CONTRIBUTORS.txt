@@ -86,11 +86,23 @@ In chronological order:
 * @p-vitt & @M4a1x
   * Documentation on troubleshooting for uberspace users
 
+* Facundo Batista <facundo@taniquetil.com.ar>
+  * Added a generic way to migrate from a json file
+
 * @benjhess
   * Optionnal gravatar support
 
 * Steffen Prince @sprin
   * Upgrade to Misaka 2
+
+* Rocka <i@rocka.me>
+  * Implementation and documentation about async comment loading
+
+* Pelle Nilsson @pellenilsson
+  * Reply notifications
+
+* Craig P Hicks @craigphicks
+  * Fix sub urls configurations on admin interface
 
 * [Your name or handle] <[email or website]>
   * [Brief summary of your changes]
